@@ -10,13 +10,7 @@ class LinkedList
   end
 
   def append(value)
-    if @head.value.nil?
-      @head = Node.new(value)
-      @tail = @head
-    else
-      @tail.next_node = Node.new(value)
-      @tail = @tail.next_node
-    end
+    @tail = @head.value.nil? ? @head = Node.new(value) : @tail.next_node = Node.new(value)
   end
 
   def prepend(value)
@@ -44,7 +38,7 @@ class LinkedList
   end
 
   def at(index, whole: false)
-    size_var = size
+    size_var = size # store method results in a variable so we don't need to call it repeatedly
     index = size_var + index if index.negative?
     return nil if size_var < index
 
